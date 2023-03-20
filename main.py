@@ -2,43 +2,29 @@
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-# A newton-Raphson code
+#This is a python code to implement Bisection mehtod
 import math
-import sympy as sp
+import timeit
 
-def func_1(x):
-    result = x ** 3 - 2 * x - 5
-    return result
 
-def derivative_1():
-    x = sp.Symbol('x')
-    f = x ** 2 + 2 * x + 1
+def f(x):
+    return x ** 3 - 2 * x - 5
 
-    # Compute the derivative of f(x)
-    f_answer = sp.diff(f, x)
-    return f_answer
 
-def next_approx(x, f, f_answer):
-    next_s = x - f/f_answer
-    return next_s
-
-# Main code to execute the algorithm
+a = 2
+b = 3
 tolerance = 1e-6
-x = 2
-f = func_1(x)
-f_answer = derivative_1()
-next_s= next_approx(x, f, f_answer)
+max_iteration = 1000
+for i in range(max_iteration):
+    c = (a + b) / 2
+    print(f"The Iteration number is : {i}")
+    if abs(f(c)) < tolerance:
 
-while abs(next_s - x) > tolerance:
-    x = next_s
-    f = func_1(x)
-    f_prime = derivative_1()
-    next_s = next_approx(x, f, f_answer)
-
-print("The root is approximately", next_s.evalf())
-
-
-
-
-
+        print(f"The rooot at x={c:.6f}")
+        print(" time used is ", timeit.timeit())
+        break
+    elif f(c) * f(a) < 0:
+        b = c
+    else:
+        a = c
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
