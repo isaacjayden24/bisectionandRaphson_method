@@ -27,4 +27,4 @@ for i in range(max_iteration):
         b = c
     else:
         a = c
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
